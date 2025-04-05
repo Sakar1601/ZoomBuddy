@@ -19,19 +19,19 @@ export default function Login() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const uid = userCredential.user.uid;
   
-      console.log("✅ Firebase Auth success: ", uid);
+      console.log("Firebase Auth success: ", uid);
   
       await set(ref(db, `users/${uid}`), {
         email,
         role,
       });
   
-      console.log("✅ Data written to Realtime DB at /users/" + uid);
+      console.log("Data written to Realtime DB at /users/" + uid);
   
       alert("Registered successfully!");
       navigate("/features");
     } catch (error) {
-      console.error("❌ Firebase error:", error.message);
+      console.error("Firebase error:", error.message);
       alert(error.message);
     }
   };
